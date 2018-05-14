@@ -60,9 +60,7 @@ PRODUCT_COPY_FILES +=  \
     $(LOCAL_PATH)/audio/aanc_tuning_mixer.txt:system/etc/aanc_tuning_mixer.txt \
     $(LOCAL_PATH)/audio/audio_effects.conf:system/vendor/etc/audio_effects.conf \
     $(LOCAL_PATH)/audio/audio_platform_info.xml:system/etc/audio_platform_info.xml \
-    $(LOCAL_PATH)/audio/audio_platform_info_extcodec.xml:system/etc/audio_platform_info_extcodec.xml \
-    $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf \
-    $(LOCAL_PATH)/audio/mixer_paths_mtp.xml:system/etc/mixer_paths_mtp.xml 
+    $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf
 
 
 # XML Audio configuration files
@@ -321,4 +319,4 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/wifi/wpa_supplicant_overlay.conf:system/etc/wifi/wpa_supplicant_overlay.conf
 
 # Call the proprietary setup
-$(call inherit-product, vendor/nubia/nx569j/nx569j-vendor.mk)
+$(call inherit-product, vendor/nubia/msm8976-common/msm8976-common-vendor.mk)

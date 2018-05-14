@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-DEVICE_PATH := device/nubia/nx569j
+DEVICE_PATH := device/nubia/msm8976-common
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := msm8952
@@ -46,14 +46,13 @@ TARGET_KEYMASTER_WAIT_FOR_QSEE := true
 
 # Kernel
 BOARD_KERNEL_BASE := 0x80000000
-BOARD_KERNEL_CMDLINE := console=null androidboot.console=null androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 earlyprintk androidboot.selinux=permissive
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 earlyprintk androidboot.selinux=permissive
 BOARD_KERNEL_IMAGE_NAME := Image.gz-dtb
 BOARD_KERNEL_OFFSET = 0x00008000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_TAGS_OFFSET := 0x00000100
 BOARD_RAMDISK_OFFSET := 0x01000000
 TARGET_KERNEL_ARCH := arm64
-TARGET_KERNEL_CONFIG := lineageos_nx569j_defconfig
 TARGET_KERNEL_SOURCE := kernel/nubia/msm8976
 
 # ANT+
@@ -111,7 +110,6 @@ DOLBY_DDP := true
 DS1_DOLBY_DAP := true
 
 # Bluetooth
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_QCOM := true
 BLUETOOTH_HCI_USE_MCT := true
@@ -148,6 +146,9 @@ MAX_EGL_CACHE_SIZE := 2048*1024
 
 OVERRIDE_RS_DRIVER:= libRSDriver_adreno.so
 
+# Filesystem
+TARGET_ANDROID_FILESYSTEM_CONFIG_H := $(DEVICE_PATH)/android_filesystem_config.h
+
 # FM
 BOARD_HAVE_QCOM_FM := true
 TARGET_QCOM_NO_FM_FIRMWARE := true
@@ -163,18 +164,13 @@ TARGET_PROVIDES_KEYMASTER := true
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
 
-# OTA Assert
-TARGET_OTA_ASSERT_DEVICE := NX569J,NX569H
-
 # Partitions
 BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
 BOARD_CACHEIMAGE_PARTITION_SIZE := 268435456
 BOARD_FLASH_BLOCK_SIZE := 131072
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 67108864
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 4294967296
 BOARD_USERDATAIMAGE_FILE_SYSTEM_TYPE := ext4
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 57033595904
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
@@ -195,6 +191,10 @@ TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/fstab.qcom
 # RIL
 PROTOBUF_SUPPORTED := true
 TARGET_RIL_VARIANT := caf
+
+# SELinux
+include device/qcom/sepolicy/sepolicy.mk
+BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
 
 # Sensors
 USE_SENSOR_MULTI_HAL := true
@@ -217,4 +217,4 @@ WIFI_DRIVER_FW_PATH_AP      := "ap"
 WIFI_DRIVER_FW_PATH_STA := "sta"
 
 # Inherit from the proprietary version
-include vendor/nubia/nx569j/BoardConfigVendor.mk
+include vendor/nubia/msm8976-common/BoardConfigVendor.mk
