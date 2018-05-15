@@ -150,10 +150,6 @@ OVERRIDE_RS_DRIVER:= libRSDriver_adreno.so
 # Filesystem
 TARGET_ANDROID_FILESYSTEM_CONFIG_H := $(VENDOR_PATH)/android_filesystem_config.h
 
-# FM
-BOARD_HAVE_QCOM_FM := true
-TARGET_QCOM_NO_FM_FIRMWARE := true
-
 # GPS
 USE_DEVICE_SPECIFIC_GPS := true
 USE_DEVICE_SPECIFIC_LOC_API := true

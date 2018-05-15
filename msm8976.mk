@@ -91,11 +91,6 @@ PRODUCT_PACKAGES += \
     hwcomposer.msm8952 \
     memtrack.msm8952
 
-# FM
-PRODUCT_PACKAGES += \
-    FMRadio \
-    libfmjni
-
 # Fingerprint
 PRODUCT_PACKAGES += \
     fingerprintd
