@@ -129,9 +129,7 @@ BOARD_USES_QCNE := true
 # CMHW
 BOARD_USES_CYANOGEN_HARDWARE := true
 BOARD_HARDWARE_CLASS += \
-    hardware/cyanogen/cmhw \
-    $(DEVICE_PATH)/cmhw
-TARGET_TAP_TO_WAKE_NODE := "/sys/class/input/input1/wake_gesture"
+    hardware/cyanogen/cmhw
 
 # Display
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
