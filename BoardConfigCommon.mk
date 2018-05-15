@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-DEVICE_PATH := device/nubia/msm8976-common
+VENDOR_PATH := device/nubia/msm8976-common
 
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := msm8952
@@ -147,7 +147,7 @@ MAX_EGL_CACHE_SIZE := 2048*1024
 OVERRIDE_RS_DRIVER:= libRSDriver_adreno.so
 
 # Filesystem
-TARGET_ANDROID_FILESYSTEM_CONFIG_H := $(DEVICE_PATH)/android_filesystem_config.h
+TARGET_ANDROID_FILESYSTEM_CONFIG_H := $(VENDOR_PATH)/android_filesystem_config.h
 
 # FM
 BOARD_HAVE_QCOM_FM := true
@@ -186,10 +186,10 @@ BOARD_USES_QCOM_HARDWARE := true
 BOARD_USES_QC_TIME_SERVICES := true
 
 # Properties
-TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
+TARGET_SYSTEM_PROP += $(VENDOR_PATH)/system.prop
 
 # Recovery
-TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/fstab.qcom
+TARGET_RECOVERY_FSTAB := $(VENDOR_PATH)/rootdir/fstab.qcom
 
 # RIL
 PROTOBUF_SUPPORTED := true
@@ -197,14 +197,14 @@ TARGET_RIL_VARIANT := caf
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
-BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy
+BOARD_SEPOLICY_DIRS += $(VENDOR_PATH)/sepolicy
 
 # Sensors
 USE_SENSOR_MULTI_HAL := true
 
 # TWRP
 ifeq ($(WITH_TWRP),true)
-include $(DEVICE_PATH)/twrp.mk
+include $(VENDOR_PATH)/twrp.mk
 endif
 
 # Wifi
