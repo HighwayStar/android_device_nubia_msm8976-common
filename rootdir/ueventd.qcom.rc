@@ -309,6 +309,16 @@
 /sys/devices/virtual/light/light                             light_value      0644    system  system
 
 
-# touchscreen
+# touchscreen nx569j
 /sys/devices/soc.0/78b8000.i2c/i2c-4/4-0020/input/input1     wake_gesture     0644    system  system
 /sys/devices/soc.0/78b8000.i2c/i2c-4/4-0020/input/input1     0dbutton         0644    system  system
+
+# touchscreen nx591j
+/sys/devices/soc.0/78b8000.i2c/i2c-4/4-0020/input/input2     wake_gesture     0644    system  system
+/sys/devices/soc.0/78b8000.i2c/i2c-4/4-0020/input/input2     0dbutton         0644    system  system
+
+# fingerprint nx591j
+/sys/devices/soc.0/fpc1020.106                               wakeup_enable    0644    system  system
+/sys/devices/soc.0/fpc1020.106                               irq              0644    system  system
+/sys/devices/soc.0/fpc1020.107                               wakeup_enable    0644    system  system
+/sys/devices/soc.0/fpc1020.107                               irq              0644    system  system

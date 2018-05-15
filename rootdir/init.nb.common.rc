@@ -3,7 +3,7 @@
 # init.nb.rc
 # For all nubia projects defined in device/zte
 
-#import init.nb.sensor.rc
+import import init.nb.device.rc
 
 on init
     export LD_SHIM_LIBS "/system/bin/cameraserver|libshims_cameraservice.so"
@@ -11,12 +11,6 @@ on init
 service fingerprintd /system/bin/fingerprintd
     class late_start
     user system
-    writepid /dev/cpuset/system-background/tasks
-
-service gx_fpd /system/bin/gx_fpd
-    class late_start
-    user system
-    group system
     writepid /dev/cpuset/system-background/tasks
 
 on early-boot

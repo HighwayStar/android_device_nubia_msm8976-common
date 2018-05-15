@@ -28,7 +28,7 @@
 #
 
 # nubia customization
-import init.nb.rc
+import init.nb.common.rc
 import init.carrier.rc
 
 on early-init
