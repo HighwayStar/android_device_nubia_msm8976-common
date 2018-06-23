@@ -1,0 +1,3 @@
+# rules for nubia camera
+allow priv_app camera_data_file:dir r_dir_perms;
+allow priv_app camera_data_file:file r_file_perms;

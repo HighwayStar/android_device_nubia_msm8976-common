@@ -185,7 +185,7 @@ on post-fs-data
     mkdir /data/misc/qsee 0770 system system
 
     # we will remap this as /mnt/sdcard with the sdcard fuse tool
-    mkdir /data/misc/camera 0770 camera camera
+    mkdir /data/misc/camera 0775 camera camera
 
     mkdir /data/misc/ipa 0700 net_admin net_admin
 
