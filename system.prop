@@ -40,6 +40,7 @@ camera.display.umax=1920x1080
 camera.display.lmax=1280x720
 persist.camera.isp.turbo=1
 persist.camera.vdbea.switch=1
+persist.camera.HAL3.enabled=1
 
 # CNE/DPM
 persist.cne.feature=1
