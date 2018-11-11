@@ -128,10 +128,6 @@ vendor/lib64/libssd.so
 vendor/lib64/libStDrvInt.so
 vendor/lib/libQSEEComAPI.so
 
-# Firmwares
-etc/firmware/DE.o.msm8952
-etc/firmware/DE.o.msm8976
-
 # Gatekeeper
 vendor/lib64/hw/gatekeeper.msm8952.so
 
