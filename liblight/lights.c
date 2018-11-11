@@ -155,7 +155,13 @@ static int set_light_backlight(struct light_device_t* dev,
         struct light_state_t const* state)
 {
     int err = 0;
+#ifndef MAX_BACKLIGTH_4096
     int brightness = rgb_to_brightness(state);
+#else
+    int color = state->color & 0x00ffffff;
+    int brightness = ((77*((color>>16)&0x00ff))
+            + (150*((color>>8)&0x00ff)) + (29*(color&0x00ff))) >> 4;
+#endif
     pthread_mutex_lock(&g_lock);
     err = write_int(LCD_FILE, brightness);
     pthread_mutex_unlock(&g_lock);
@@ -243,7 +249,15 @@ static int set_breath_light_locked(int event,
 	}
     snprintf(buffer, sizeof(buffer), "%d %d %d\n", offMS, onMS, onMS);
     ALOGD("offMS=%d onMS=%d onMS=%d\n", offMS, onMS, onMS);
+#ifdef NO_HOME_LED
+    write_int(BREATH_RED_OUTN, LEFT_MASK);
+    write_str(BREATH_RED_FADE, "3 0 4");
+    write_str(BREATH_RED_GRADE, "0 255");
+    write_int(BREATH_RED_LED, AW_FADE_AUTO);
+    write_int(BREATH_RED_OUTN, RIGHT_MASK);
+#else
     write_int(BREATH_RED_OUTN, HOME_MASK);
+#endif
     write_str(BREATH_RED_FADE, buffer);
     write_str(BREATH_RED_GRADE, "0 255");
     write_int(BREATH_RED_LED, AW_FADE_AUTO);
@@ -282,8 +296,10 @@ static int set_light_buttons(struct light_device_t* dev,
         rc = property_get("perist.sy.disablebtn", prop , "1");
 
         //mid
+#ifndef NO_HOME_LED 
         write_int(BREATH_RED_OUTN, HOME_MASK);
         write_int(BREATH_RED_LED, AW_CONST_ON);
+#endif
 
         if(!rc || (strncmp(prop, "1", PROP_VALUE_MAX) >=0)){
             //right
